@@ -23,7 +23,6 @@ class Lobby extends PureComponent {
         <Paper className="paper">
           <Menu>
             { this.props.batches.map((batch,index) => <h3 key={ index } > Batch #{ batch.batchNumber } </h3>) }
-            { this.props.students.map((student,index) => <p key={ index }> { this.props.batches.find({_id: student.batch_id}) } </p>) }
           </Menu>
         </Paper>
       </div>
