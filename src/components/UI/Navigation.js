@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import signOut from '../../actions/user/sign-out'
+import fetchBatches from '../../actions/batches/fetch'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
 import BatchIcon from 'material-ui/svg-icons/hardware/videogame-asset'
@@ -28,7 +29,7 @@ class Navigation extends PureComponent {
   }
 
   goHome = () => {
-    this.props.push('/')
+    this.props.fetchBatches()
   }
 
   render() {
@@ -50,4 +51,4 @@ const mapStateToProps = ({ currentUser }) => ({
   signedIn: (!!currentUser && !!currentUser._id)
 })
 
-export default connect(mapStateToProps, { push, signOut })(Navigation)
+export default connect(mapStateToProps, { fetchBatches, push, signOut })(Navigation)
