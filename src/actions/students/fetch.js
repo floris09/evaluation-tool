@@ -7,6 +7,8 @@ import {
   LOAD_SUCCESS
 } from '../loading'
 export const BATCH_STUDENTS_FETCHED = 'BATCH_STUDENTS_FETCHED'
+export const RANDOM_STUDENT_FETCHED = 'RANDOM_STUDENT_FETCHED'
+
 
 const api = new API()
 
@@ -32,5 +34,14 @@ export default () => {
           payload: error.message
         })
       })
+  }
+}
+
+export const randomStudent = (lastStudentEvaluations) => {
+  return (dispatch) => {
+    dispatch({
+      type: RANDOM_STUDENT_FETCHED,
+      payload: lastStudentEvaluations
+    })
   }
 }

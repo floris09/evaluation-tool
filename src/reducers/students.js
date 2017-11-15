@@ -7,6 +7,7 @@ export default (state = [], { type, payload } = {}) => {
     case BATCH_STUDENTS_FETCHED :
         return [...payload]
 
+
         default :
           return state
   }
