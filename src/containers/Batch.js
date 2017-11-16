@@ -68,11 +68,9 @@ class Batch extends PureComponent {
     const { batchId } = this.props.match.params
     const { batches } = this.props
 
-    if(!batches) return null
-
     return (
       <div className="Batch">
-        <h3> Batch #{ this.props.batches.batchNumber }</h3>
+        <h3> Batch #{ batches.batchNumber }</h3>
         <StudentForm batchId={ batchId } />
         <button onClick={ this.randomStudent.bind(this,lastStudentEvaluations) }>Random Student</button>
         <img src={this.renderRandomStudentImage()} />
