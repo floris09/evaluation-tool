@@ -14,8 +14,6 @@ export default (state = [], { type, payload } = {}) => {
     case FETCHED_ONE_BATCH :
       return { ...payload }
 
-
-
     case BATCH_CREATED :
       const newBatch = { ...payload }
       return [newBatch].concat(state)
