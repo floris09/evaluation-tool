@@ -1,4 +1,6 @@
 .percentage {
   display: inline-block;
   float: left;
+  text-align: center;
+  font-size: 20px;
 }

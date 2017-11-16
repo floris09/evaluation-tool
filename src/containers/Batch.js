@@ -93,9 +93,9 @@ class Batch extends PureComponent {
         <p>{this.renderRandomStudentName()}</p>
 
         <div style={{width:'1000px',height:'50px'}}>
-          <div className='percentage' style={{width:`${greenWidth}`,height:'50px',background:'green'}}></div>
-          <div className='percentage' style={{width:`${yellowWidth}`,height:'50px',background:'yellow'}}></div>
-          <div className='percentage' style={{width:`${redWidth}`,height:'50px',background:'red'}}></div>
+          <div className='percentage' style={{width:`${greenWidth}`,height:'50px',background:'green'}}>{greenPercentage}</div>
+          <div className='percentage' style={{width:`${yellowWidth}`,height:'50px',background:'yellow'}}>{yellowPercentage}</div>
+          <div className='percentage' style={{width:`${redWidth}`,height:'50px',background:'red'}}>{redPercentage}</div>
         </div>
 
         { students.map((student,index) => <div onClick={ this.toStudentPage.bind(this,student._id) } style={ {background: this.lastStudentEvaluation(student._id)}} key={ `div${index}`}><img key={`img${index}`} src={ student.imageUrl } alt='student'/> <p key={ index }>{ student.name } </p> </div> )}
