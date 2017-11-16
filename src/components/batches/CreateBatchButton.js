@@ -4,13 +4,16 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
 import StarIcon from 'material-ui/svg-icons/action/favorite'
-import createBatch from '../../actions/batches/create'
+import { push } from 'react-router-redux'
 
 class CreateBatchButton extends PureComponent {
   static propTypes = {
     signedIn: PropTypes.bool,
   }
 
+createBatch(){
+  this.props.push('/create')
+}
   render() {
     if (!this.props.signedIn) return null
 
@@ -19,7 +22,7 @@ class CreateBatchButton extends PureComponent {
         <RaisedButton
           label="Create Batch"
           primary={true}
-          onClick={this.props.createBatch}
+          onClick={this.createBatch.bind(this)}
           icon={<StarIcon />} />
       </div>
     )
@@ -30,4 +33,4 @@ const mapStateToProps = ({ currentUser }) => ({
   signedIn: !!currentUser && !!currentUser._id,
 })
 
-export default connect(mapStateToProps, { createBatch })(CreateBatchButton)
+export default connect(mapStateToProps, { push })(CreateBatchButton)

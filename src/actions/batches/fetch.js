@@ -84,7 +84,7 @@ export const fetchOneBatch = (batchId) => {
           payload: result.body
         })
 
-        dispatch(push(`/${batchId}`))
+        dispatch(push(`/batch/${batchId}`))
 
       })
       .catch((error) => {
