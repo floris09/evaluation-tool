@@ -4,6 +4,7 @@ import { push } from 'react-router-redux'
 import { fetchOneStudent } from '../actions/students/fetch'
 import fetchEvaluations  from '../actions/evaluations/fetch'
 import EvaluationForm from '../components/evaluations/EvaluationForm'
+import './Student.css'
 
 class Student extends PureComponent {
 
@@ -19,9 +20,13 @@ class Student extends PureComponent {
 
     return (
       <div className="Student">
-      <h1>{ students.name }</h1>
-      <img src={ students.imageUrl } />
-      { studentEvaluations.map( (evaluation,index) => <div key={ index } style={ {height:'50px',width:'50px',background: evaluation.color}  }/> )  }
+        <div className='name'>
+          <h1>{ students.name }</h1>
+        </div>
+
+        <div className="img" style={{backgroundImage:"url("+ students.imageUrl+")" }}/>
+
+      { studentEvaluations.map( (evaluation,index) => <div className='square-container'><div className='square' key={ index } style={ {height:'50px',width:'50px',background: evaluation.color}  }/></div> )  }
       <EvaluationForm studentId={ students._id }/>
       </div>
     )
