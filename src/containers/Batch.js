@@ -16,11 +16,8 @@ class Batch extends PureComponent {
 
 
   componentWillMount(){
-    const { batchId } = this.props.match.params
-
-    this.props.fetchEvaluations()
-    this.props.fetchOneBatch(batchId)
     this.props.fetchStudents()
+    this.props.fetchEvaluations()
   }
 
 
@@ -68,6 +65,9 @@ class Batch extends PureComponent {
     const students = this.batchStudents()
     const lastStudentEvaluations = students.map(student => {return {...student, color: this.lastStudentEvaluation(student._id)}})
     const { batchId } = this.props.match.params
+    const { batches } = this.props
+
+    if(!batches) return null
 
     return (
       <div className="Batch">
