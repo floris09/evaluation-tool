@@ -8,6 +8,8 @@ import { randomStudent } from '../actions/students/fetch'
 import { push } from 'react-router-redux'
 import { fetchOneStudent } from '../actions/students/fetch'
 import StudentForm from '../components/students/StudentForm'
+import RaisedButton from 'material-ui/RaisedButton'
+import './Batch.css'
 
 class Batch extends PureComponent {
   static propTypes = {
@@ -17,8 +19,10 @@ class Batch extends PureComponent {
 
 
   componentWillMount(){
+    const { batchId } = this.props.match.params
     this.props.fetchStudents()
     this.props.fetchEvaluations()
+    this.props.fetchOneBatch(batchId)
   }
 
 
@@ -54,9 +58,6 @@ class Batch extends PureComponent {
     return theRandomStudent.name
   }
 
-  getPercentage(color){
-
-  }
 
   toStudentPage(studentId){
     this.props.push(`/student/${studentId}`)
@@ -64,22 +65,61 @@ class Batch extends PureComponent {
 
   render() {
     const students = this.batchStudents()
+    const colors = students.map(student => this.lastStudentEvaluation(student._id))
+
+    const green = colors.filter(color => color === 'green')
+    const yellow = colors.filter(color => color === 'yellow')
+    const red = colors.filter(color => color === 'red')
+
+    const greenPercentage = `${Math.floor((green.length/students.length)*100)}%`
+    const yellowPercentage = `${Math.floor((yellow.length/students.length)*100)}%`
+    const redPercentage = `${Math.floor((red.length/students.length)*100)}%`
+
+    const greenWidth = `${(green.length/students.length)*1000}px`
+    const yellowWidth = `${(yellow.length/students.length)*1000}px`
+    const redWidth = `${(red.length/students.length)*1000}px`
+
     const lastStudentEvaluations = students.map(student => {return {...student, color: this.lastStudentEvaluation(student._id)}})
+
     const { batchId } = this.props.match.params
-    const { batches } = this.props
+    const { batches,theRandomStudent } = this.props
 
     return (
       <div className="Batch">
-        <h3> Batch #{ batches.batchNumber }</h3>
-        <StudentForm batchId={ batchId } />
-        <button onClick={ this.randomStudent.bind(this,lastStudentEvaluations) }>Random Student</button>
-        <img src={this.renderRandomStudentImage()} />
-        <p>{this.renderRandomStudentName()}</p>
-        <div style={{width:'600px'}}>
-
-
+        <div className='batch-name'>
+          <h1> Batch #{ batches.batchNumber }</h1>
         </div>
-        { students.map((student,index) => <div onClick={ this.toStudentPage.bind(this,student._id) } style={ {background: this.lastStudentEvaluation(student._id)}} key={ `div${index}`}><img key={`img${index}`} src={ student.imageUrl } alt='student'/> <p key={ index }>{ student.name } </p> </div> )}
+
+        <StudentForm batchId={ batchId } />
+
+        <div className="random-student-button">
+          <RaisedButton
+            label="Random Student"
+            primary={true}
+            onClick={ this.randomStudent.bind(this,lastStudentEvaluations) }
+            />
+        </div>
+
+        <div className='random-student-container' style={{background:theRandomStudent.color}} >
+          <div className='random-student-img' style={{backgroundImage:'url(' + this.renderRandomStudentImage() + ')'}} />
+          <h3>{theRandomStudent.name}</h3>
+        </div>
+
+        <div className='percentage-bar' style={{width:'1000px',height:'50px'}}>
+          <div className='percentage' style={{width:`${greenWidth}`,height:'50px',background:'green'}}>{greenPercentage}</div>
+          <div className='percentage' style={{width:`${yellowWidth}`,height:'50px',background:'yellow'}}>{yellowPercentage}</div>
+          <div className='percentage' style={{width:`${redWidth}`,height:'50px',background:'red'}}>{redPercentage}</div>
+        </div>
+
+        <div className='all-students-container'>
+        { students.map((student,index) =>
+             <div className='student-container' onClick={ this.toStudentPage.bind(this,student._id) } style={ {background: this.lastStudentEvaluation(student._id)}} key={ `div${index}`}>
+
+                  <div className='student-img' key={`img${index}`} style={{backgroundImage:'url(' + student.imageUrl + ')'}}/> <h3 key={ index }>{ student.name } </h3>
+                  </div>
+                      )
+        }
+        </div>
       </div>
     )
   }

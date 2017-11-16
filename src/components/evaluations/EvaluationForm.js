@@ -9,9 +9,12 @@ import { push } from 'react-router-redux'
 import { RadioGroup, RadioButton } from 'react-radio-buttons'
 
 const dialogStyle = {
-  width: '400px',
+  width: '500px',
   margin: '50px auto',
   padding: '2rem',
+  position: 'relative',
+  left: '200px',
+  bottom: '350px'
 }
 
 const buttonStyle = {
@@ -49,6 +52,7 @@ class EvaluationForm extends PureComponent {
       student_id: studentId
     }
     this.props.createEvaluation(evaluation)
+    this.props.push(`/batch/${this.props.students.batch_id}`)
 
   }
 
@@ -60,7 +64,7 @@ class EvaluationForm extends PureComponent {
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">
-            <TextField ref="date" type="date" hintText="" />
+            <TextField ref="date" type="date" hintText="" default={Date.now} />
           </div>
           <div className="input">
           <RadioGroup ref="color" onChange={ this.setColor.bind(this) } horizontal>
@@ -89,8 +93,6 @@ class EvaluationForm extends PureComponent {
   }
 }
 
-const mapStateToProps = ({ currentUser }) => ({
-  signedIn: !!currentUser && !!currentUser._id,
-})
+const mapStateToProps = ({ students }) => ({ students })
 
 export default connect(mapStateToProps, { createEvaluation, push })(EvaluationForm)
