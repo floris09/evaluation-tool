@@ -59,8 +59,8 @@ class Batch extends PureComponent {
   }
 
   toStudentPage(studentId){
-    const { batchId } = this.props.match.params
-    this.props.push(`/student`)
+    // const { batchId } = this.props.match.params
+    this.props.push(`/student/${studentId}`)
   }
 
   render() {

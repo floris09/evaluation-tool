@@ -1,4 +1,5 @@
 // src/actions/batches/create.js
+import { push } from 'react-router-redux'
 
 import API from '../../api/client'
 import {
@@ -10,14 +11,15 @@ import {
 
 const api = new API()
 
-export default () => {
+export default (body) => {
   return (dispatch) => {
     dispatch({ type: APP_LOADING })
-
-    api.post('/batches', {})
+    console.log(body)
+    api.post('/batches', {...body})
       .then(() => {
         dispatch({ type: APP_DONE_LOADING })
         dispatch({ type: LOAD_SUCCESS })
+        dispatch(push('/'))
       })
       .catch((error) => {
         dispatch({ type: APP_DONE_LOADING })
