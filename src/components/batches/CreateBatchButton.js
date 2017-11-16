@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import RaisedButton from 'material-ui/RaisedButton'
-import StarIcon from 'material-ui/svg-icons/action/favorite'
+import StarIcon from 'material-ui/svg-icons/content/add-circle'
 import { push } from 'react-router-redux'
 
 class CreateBatchButton extends PureComponent {
