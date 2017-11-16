@@ -15,11 +15,10 @@ export default class Routes extends Component {
     return (
       <div>
         <Route exact path="/" component={Lobby} />
+        <Route path="/student" component={Student} />
         <Route path="/:batchId" component={Batch} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
-        <Route path="/:batchId/:studentId" component={Student} />
-
       </div>
     )
   }

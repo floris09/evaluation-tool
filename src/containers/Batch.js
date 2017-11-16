@@ -6,7 +6,7 @@ import  fetchStudents  from '../actions/students/fetch'
 import  fetchEvaluations  from '../actions/evaluations/fetch'
 import { randomStudent } from '../actions/students/fetch'
 import { push } from 'react-router-redux'
-
+import { fetchOneStudent } from '../actions/students/fetch'
 
 class Batch extends PureComponent {
   static propTypes = {
@@ -58,6 +58,11 @@ class Batch extends PureComponent {
 
   }
 
+  toStudentPage(studentId){
+    const { batchId } = this.props.match.params
+    this.props.push(`/student`)
+  }
+
   render() {
     const students = this.batchStudents()
     const lastStudentEvaluations = students.map(student => {return {...student, color: this.lastStudentEvaluation(student._id)}})
@@ -73,7 +78,7 @@ class Batch extends PureComponent {
 
 
         </div>
-        { students.map((student,index) => <div style={ {background: this.lastStudentEvaluation(student._id)}} key={ `div${index}`}><img key={`img${index}`} src={ student.imageUrl } alt='student'/> <p key={ index }>{ student.name } </p> </div> )}
+        { students.map((student,index) => <div onClick={ this.toStudentPage.bind(this,student._id) } style={ {background: this.lastStudentEvaluation(student._id)}} key={ `div${index}`}><img key={`img${index}`} src={ student.imageUrl } alt='student'/> <p key={ index }>{ student.name } </p> </div> )}
       </div>
     )
   }
@@ -86,5 +91,6 @@ export default connect(mapStateToProps, {
   fetchStudents,
   fetchEvaluations,
   randomStudent,
+  fetchOneStudent,
   push
 })(Batch)
