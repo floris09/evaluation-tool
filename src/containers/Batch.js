@@ -106,9 +106,9 @@ class Batch extends PureComponent {
         </div>
 
         <div className='percentage-bar' style={{width:'1000px',height:'50px'}}>
-          <div className='percentage' style={{width:`${greenWidth}`,height:'50px',background:'green'}}>{greenPercentage}</div>
-          <div className='percentage' style={{width:`${yellowWidth}`,height:'50px',background:'yellow'}}>{yellowPercentage}</div>
-          <div className='percentage' style={{width:`${redWidth}`,height:'50px',background:'red'}}>{redPercentage}</div>
+          <div className='percentage' style={{width:`${greenWidth}`,height:'30px',background:'green'}}>{greenPercentage}</div>
+          <div className='percentage' style={{width:`${yellowWidth}`,height:'30px',background:'yellow'}}>{yellowPercentage}</div>
+          <div className='percentage' style={{width:`${redWidth}`,height:'30px',background:'red'}}>{redPercentage}</div>
         </div>
 
         <div className='all-students-container'>

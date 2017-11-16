@@ -53,6 +53,10 @@
   margin-top: 20px;
 }
 
+.percentage {
+  font-size: 25px;
+}
+
 .random-student-button {
   margin-left: 100px;
   margin-top: -30px;

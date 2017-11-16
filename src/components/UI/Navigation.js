@@ -7,7 +7,7 @@ import signOut from '../../actions/user/sign-out'
 import fetchBatches from '../../actions/batches/fetch'
 import AppBar from 'material-ui/AppBar'
 import IconButton from 'material-ui/IconButton'
-import BatchIcon from 'material-ui/svg-icons/hardware/videogame-asset'
+import BatchIcon from 'material-ui/svg-icons/action/thumbs-up-down'
 import FlatButton from 'material-ui/FlatButton'
 
 const TITLE = 'Student Evaluation Tool'
