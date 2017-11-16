@@ -7,6 +7,7 @@ import  fetchEvaluations  from '../actions/evaluations/fetch'
 import { randomStudent } from '../actions/students/fetch'
 import { push } from 'react-router-redux'
 import { fetchOneStudent } from '../actions/students/fetch'
+import StudentForm from '../components/students/StudentForm'
 
 class Batch extends PureComponent {
   static propTypes = {
@@ -31,7 +32,8 @@ class Batch extends PureComponent {
   lastStudentEvaluation(studentId){
     var evaluations = []
     evaluations = (this.props.evaluations.filter(evaluation => evaluation.student_id === studentId))
-    return evaluations[0].color
+    if(evaluations.length !== 0){return evaluations[0].color}
+    else {return 'green'}
   }
 
   randomStudent(lastStudentEvaluations){
@@ -59,18 +61,18 @@ class Batch extends PureComponent {
   }
 
   toStudentPage(studentId){
-    // const { batchId } = this.props.match.params
     this.props.push(`/student/${studentId}`)
   }
 
   render() {
     const students = this.batchStudents()
     const lastStudentEvaluations = students.map(student => {return {...student, color: this.lastStudentEvaluation(student._id)}})
-
+    const { batchId } = this.props.match.params
 
     return (
       <div className="Batch">
         <h3> Batch #{ this.props.batches.batchNumber }</h3>
+        <StudentForm batchId={ batchId } />
         <button onClick={ this.randomStudent.bind(this,lastStudentEvaluations) }>Random Student</button>
         <img src={this.renderRandomStudentImage()} />
         <p>{this.renderRandomStudentName()}</p>
