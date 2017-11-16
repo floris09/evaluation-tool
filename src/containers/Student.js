@@ -3,13 +3,14 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { fetchOneStudent } from '../actions/students/fetch'
 import fetchEvaluations  from '../actions/evaluations/fetch'
+import EvaluationForm from '../components/evaluations/EvaluationForm'
 
 class Student extends PureComponent {
 
   componentWillMount(){
+    this.props.fetchEvaluations()
     const { studentId } = this.props.match.params
     this.props.fetchOneStudent(studentId)
-    this.props.fetchEvaluations()
   }
 
   render() {
@@ -20,7 +21,8 @@ class Student extends PureComponent {
       <div className="Student">
       <h1>{ students.name }</h1>
       <img src={ students.imageUrl } />
-      { studentEvaluations.map(evaluation => <div style={ {height:'50px',width:'50px',background: evaluation.color}  }/> )  }
+      { studentEvaluations.map( (evaluation,index) => <div key={ index } style={ {height:'50px',width:'50px',background: evaluation.color}  }/> )  }
+      <EvaluationForm studentId={ students._id }/>
       </div>
     )
   }

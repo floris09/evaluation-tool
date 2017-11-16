@@ -11,7 +11,8 @@ import StudentForm from '../components/students/StudentForm'
 
 class Batch extends PureComponent {
   static propTypes = {
-    fetchOneBatch: PropTypes.func.isRequired,
+    fetchStudents: PropTypes.func.isRequired,
+    fetchEvaluations: PropTypes.func.isRequired
   }
 
 
