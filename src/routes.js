@@ -7,7 +7,7 @@ import {
   Batch,
   SignIn,
   SignUp,
-  RandomStudent
+  Student
 } from './containers'
 
 export default class Routes extends Component {
@@ -18,7 +18,7 @@ export default class Routes extends Component {
         <Route path="/:batchId" component={Batch} />
         <Route path="/sign-in" component={SignIn} />
         <Route path="/sign-up" component={SignUp} />
-        <Route path="/:batchId/random-student" component={RandomStudent} />
+        <Route path="/:batchId/:studentId" component={Student} />
 
       </div>
     )

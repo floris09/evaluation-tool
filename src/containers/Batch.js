@@ -35,9 +35,23 @@ class Batch extends PureComponent {
   }
 
   randomStudent(lastStudentEvaluations){
-    const { batchId } = this.props.match.params
-    this.props.push(`/${batchId}/random-student`)
     this.props.randomStudent(lastStudentEvaluations)
+  }
+
+  renderRandomStudentImage(){
+    const { theRandomStudent } = this.props
+    const students = this.batchStudents()
+    const studentNames = students.map(student => student.name)
+    if (studentNames.indexOf(theRandomStudent.name) === -1) return
+    return theRandomStudent.imageUrl
+  }
+
+  renderRandomStudentName(){
+    const { theRandomStudent } = this.props
+    const students = this.batchStudents()
+    const studentNames = students.map(student => student.name)
+    if (studentNames.indexOf(theRandomStudent.name) === -1) return
+    return theRandomStudent.name
   }
 
   getPercentage(color){
@@ -45,7 +59,6 @@ class Batch extends PureComponent {
   }
 
   render() {
-    const { theRandomStudent } = this.props
     const students = this.batchStudents()
     const lastStudentEvaluations = students.map(student => {return {...student, color: this.lastStudentEvaluation(student._id)}})
 
@@ -54,8 +67,8 @@ class Batch extends PureComponent {
       <div className="Batch">
         <h3> Batch #{ this.props.batches.batchNumber }</h3>
         <button onClick={ this.randomStudent.bind(this,lastStudentEvaluations) }>Random Student</button>
-        <img src={theRandomStudent.imageUrl} />
-        <p>{theRandomStudent.name}</p>
+        <img src={this.renderRandomStudentImage()} />
+        <p>{this.renderRandomStudentName()}</p>
         <div style={{width:'600px'}}>
 
 
