@@ -13,7 +13,7 @@
 .random-student-img {
   height: 200px;
   width: 200px;
-  border-radius: 10x;
+  border-radius: 20px 20px 0 0;
   background-size: cover;
   background-position: center center;
 }
@@ -33,7 +33,7 @@
 .student-img {
   height: 200px;
   width: 200px;
-  border-radius: 10x;
+  border-radius: 20px 20px 0 0;
   background-size: cover;
   background-position: center center;
 }

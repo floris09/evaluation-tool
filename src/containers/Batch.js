@@ -67,7 +67,7 @@ class Batch extends PureComponent {
 
   render() {
     const { batchId } = this.props.match.params
-    const { batches, students } = this.props
+    const { batches, students, theRandomStudent } = this.props
 
     const colors = students.map(student => this.lastStudentEvaluation(student._id))
 
@@ -102,7 +102,7 @@ class Batch extends PureComponent {
             />
         </div>
 
-        <div className='random-student-container' style={{background:this.renderRandomStudentColor()}} >
+        <div onClick={ this.toStudentPage.bind(this,theRandomStudent._id) } className='random-student-container' style={{background:this.renderRandomStudentColor()}} >
           <div className='random-student-img' style={{backgroundImage:'url(' + this.renderRandomStudentImage() + ')'}} />
           <h3>{this.renderRandomStudentName()}</h3>
         </div>
