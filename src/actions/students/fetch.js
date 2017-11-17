@@ -74,7 +74,6 @@ export const randomStudent = (lastStudentEvaluations) => {
 
 export const fetchBatchStudents = (batchId) => {
   return (dispatch) => {
-    console.log(batchId)
     dispatch({
       type: BATCH_STUDENTS_FETCHED,
       payload: batchId

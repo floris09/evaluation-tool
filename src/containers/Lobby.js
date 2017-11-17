@@ -30,7 +30,7 @@ class Lobby extends PureComponent {
         <CreateBatchButton />
         <Paper className="paper">
           <Menu>
-            { this.props.batches.map((batch,index) => <h3 key={ index } onClick={ this.fetchBatch.bind(this, batch._id) } > Batch #{ batch.batchNumber } </h3>) }
+            { this.props.batches.map((batch,index) => <h3 key={ index } onClick={ this.fetchBatch.bind(this, batch._id) } > Batch #{ batch.batchNumber }  ||  {batch.startDate.substr(0,10)} - {batch.endDate.substr(0,10)}</h3>) }
           </Menu>
         </Paper>
       </div>

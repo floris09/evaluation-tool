@@ -44,6 +44,9 @@ class EvaluationForm extends PureComponent {
   submitForm(event) {
     event.preventDefault()
     const { studentId } = this.props
+    const thisStudent = this.props.students.filter(student => student._id === studentId)
+    const daStudent = thisStudent[0]
+    const batchId = daStudent.batch_id
 
     const evaluation = {
       date: this.refs.date.getValue(),
@@ -52,7 +55,7 @@ class EvaluationForm extends PureComponent {
       student_id: studentId
     }
     this.props.createEvaluation(evaluation)
-    this.props.push(`/batch/${this.props.students.batch_id}`)
+    this.props.push(`/batch/${batchId}`)
 
   }
 
