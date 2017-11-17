@@ -16,30 +16,37 @@ const buttonStyle = {
 class Student extends PureComponent {
 
   componentWillMount(){
+    if (this.props.students.length === 0){ return this.props.push('/')}
+
     this.props.fetchEvaluations()
-    const { studentId } = this.props.match.params
-    this.props.fetchOneStudent(studentId)
   }
 
   goBack(){
-    this.props.push(`/batch/${this.props.students.batch_id}`)
+    const { studentId } = this.props.match.params
+    const thisStudent = this.props.students.filter(student => student._id === studentId)
+    const daStudent = thisStudent[0]
+    const batchId = daStudent.batch_id
+    this.props.push(`/batch/${batchId}`)
   }
 
   render() {
     const { students, evaluations } = this.props
-    const studentEvaluations = evaluations.filter(evaluation => evaluation.student_id === students._id)
+    const { studentId } = this.props.match.params
+    const thisStudent = this.props.students.filter(student => student._id === studentId)
+    const daStudent = thisStudent[0]
+    const studentEvaluations = evaluations.filter(evaluation => evaluation.student_id === daStudent._id)
 
     return (
       <div className="Student">
         <div className='name'>
-          <h1>{ students.name }</h1>
+          <h1>{ daStudent.name }</h1>
         </div>
 
-        <div className="img" style={{backgroundImage:"url("+ students.imageUrl+")" }}/>
+        <div className="img" style={{backgroundImage:"url("+ daStudent.imageUrl+")" }}/>
 
       { studentEvaluations.map( (evaluation,index) => <div className='square-container'><div className='square' key={ index } style={ {height:'50px',width:'50px',background: evaluation.color}  }></div></div> )  }
 
-      <EvaluationForm studentId={ students._id }/>
+      <EvaluationForm studentId={ daStudent._id }/>
 
       <RaisedButton
         style={ buttonStyle }
