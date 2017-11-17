@@ -56,6 +56,19 @@ class EvaluationForm extends PureComponent {
 
   }
 
+  submitFormNext(event) {
+    event.preventDefault()
+    const { studentId } = this.props
+
+    const evaluation = {
+      date: this.refs.date.getValue(),
+      color: this.state.color,
+      remark: this.refs.remark.getValue(),
+      student_id: studentId
+    }
+    this.props.createEvaluation(evaluation)
+  }
+
 
   render() {
     return (
@@ -86,7 +99,12 @@ class EvaluationForm extends PureComponent {
         <RaisedButton
           style={ buttonStyle }
           onClick={ this.submitForm.bind(this) }
-          label="Create"
+          label="Save"
+          primary={true} />
+        <RaisedButton
+          style={ buttonStyle }
+          onClick={ this.submitFormNext.bind(this) }
+          label="Save & Next"
           primary={true} />
       </Paper>
     )

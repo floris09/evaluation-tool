@@ -7,6 +7,7 @@ import  fetchEvaluations  from '../actions/evaluations/fetch'
 import { randomStudent } from '../actions/students/fetch'
 import { push } from 'react-router-redux'
 import { fetchOneStudent } from '../actions/students/fetch'
+import { fetchBatchStudents } from '../actions/students/fetch'
 import StudentForm from '../components/students/StudentForm'
 import RaisedButton from 'material-ui/RaisedButton'
 import './Batch.css'
@@ -20,15 +21,11 @@ class Batch extends PureComponent {
 
   componentWillMount(){
     const { batchId } = this.props.match.params
-    this.props.fetchStudents()
+
+    if (this.props.students.length === 0){ return this.props.push('/')}
     this.props.fetchEvaluations()
     this.props.fetchOneBatch(batchId)
-  }
-
-
-  batchStudents(){
-    const { batchId } = this.props.match.params
-    return this.props.students.filter(student => student.batch_id === batchId)
+    this.props.fetchBatchStudents(batchId)
   }
 
   lastStudentEvaluation(studentId){
@@ -43,19 +40,24 @@ class Batch extends PureComponent {
   }
 
   renderRandomStudentImage(){
-    const { theRandomStudent } = this.props
-    const students = this.batchStudents()
+    const { theRandomStudent,students } = this.props
     const studentNames = students.map(student => student.name)
     if (studentNames.indexOf(theRandomStudent.name) === -1) return
     return theRandomStudent.imageUrl
   }
 
   renderRandomStudentName(){
-    const { theRandomStudent } = this.props
-    const students = this.batchStudents()
+    const { theRandomStudent,students } = this.props
     const studentNames = students.map(student => student.name)
     if (studentNames.indexOf(theRandomStudent.name) === -1) return
     return theRandomStudent.name
+  }
+
+  renderRandomStudentColor(){
+    const { theRandomStudent,students } = this.props
+    const studentNames = students.map(student => student.name)
+    if (studentNames.indexOf(theRandomStudent.name) === -1) return
+    return theRandomStudent.color
   }
 
 
@@ -64,7 +66,9 @@ class Batch extends PureComponent {
   }
 
   render() {
-    const students = this.batchStudents()
+    const { batchId } = this.props.match.params
+    const { batches, students } = this.props
+
     const colors = students.map(student => this.lastStudentEvaluation(student._id))
 
     const green = colors.filter(color => color === 'green')
@@ -81,8 +85,6 @@ class Batch extends PureComponent {
 
     const lastStudentEvaluations = students.map(student => {return {...student, color: this.lastStudentEvaluation(student._id)}})
 
-    const { batchId } = this.props.match.params
-    const { batches,theRandomStudent } = this.props
 
     return (
       <div className="Batch">
@@ -100,15 +102,15 @@ class Batch extends PureComponent {
             />
         </div>
 
-        <div className='random-student-container' style={{background:theRandomStudent.color}} >
+        <div className='random-student-container' style={{background:this.renderRandomStudentColor()}} >
           <div className='random-student-img' style={{backgroundImage:'url(' + this.renderRandomStudentImage() + ')'}} />
-          <h3>{theRandomStudent.name}</h3>
+          <h3>{this.renderRandomStudentName()}</h3>
         </div>
 
         <div className='percentage-bar' style={{width:'1000px',height:'50px'}}>
-          <div className='percentage' style={{width:`${greenWidth}`,height:'30px',background:'green'}}>{greenPercentage}</div>
-          <div className='percentage' style={{width:`${yellowWidth}`,height:'30px',background:'yellow'}}>{yellowPercentage}</div>
-          <div className='percentage' style={{width:`${redWidth}`,height:'30px',background:'red'}}>{redPercentage}</div>
+          <div className='percentage' style={{width:`${greenWidth}`,height:'20px',background:'green'}}>{greenPercentage}</div>
+          <div className='percentage' style={{width:`${yellowWidth}`,height:'20px',background:'yellow'}}>{yellowPercentage}</div>
+          <div className='percentage' style={{width:`${redWidth}`,height:'20px',background:'red'}}>{redPercentage}</div>
         </div>
 
         <div className='all-students-container'>
@@ -133,5 +135,6 @@ export default connect(mapStateToProps, {
   fetchEvaluations,
   randomStudent,
   fetchOneStudent,
+  fetchBatchStudents,
   push
 })(Batch)

@@ -1,4 +1,3 @@
-import { push } from 'react-router-redux'
 
 import API from '../../api/client'
 import {
@@ -7,9 +6,11 @@ import {
   LOAD_ERROR,
   LOAD_SUCCESS
 } from '../loading'
-export const BATCH_STUDENTS_FETCHED = 'BATCH_STUDENTS_FETCHED'
+export const STUDENTS_FETCHED = 'STUDENTS_FETCHED'
 export const RANDOM_STUDENT_FETCHED = 'RANDOM_STUDENT_FETCHED'
 export const FETCHED_ONE_STUDENT = 'FETCHED_ONE_STUDENT'
+export const BATCH_STUDENTS_FETCHED = 'BATCH_STUDENTS_FETCHED'
+
 
 const api = new API()
 
@@ -23,7 +24,7 @@ export default () => {
         dispatch({ type: LOAD_SUCCESS })
 
         dispatch({
-          type: BATCH_STUDENTS_FETCHED,
+          type: STUDENTS_FETCHED,
           payload: result.body
         })
 
@@ -67,6 +68,16 @@ export const randomStudent = (lastStudentEvaluations) => {
     dispatch({
       type: RANDOM_STUDENT_FETCHED,
       payload: lastStudentEvaluations
+    })
+  }
+}
+
+export const fetchBatchStudents = (batchId) => {
+  return (dispatch) => {
+    console.log(batchId)
+    dispatch({
+      type: BATCH_STUDENTS_FETCHED,
+      payload: batchId
     })
   }
 }
