@@ -89,10 +89,10 @@ class EvaluationForm extends PureComponent {
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">
-            <TextField ref="date" type="date" hintText="" default={Date.now} />
+            <TextField name="date" ref="date" type="date" hintText=""/>
           </div>
           <div className="input">
-          <RadioGroup ref="color" onChange={ this.setColor.bind(this) } horizontal>
+          <RadioGroup name="color" ref="color" onChange={ this.setColor.bind(this) } horizontal>
             <RadioButton value="green">
               Good and on track
             </RadioButton>
@@ -105,7 +105,7 @@ class EvaluationForm extends PureComponent {
           </RadioGroup>
           </div>
           <div className="input">
-            <TextField ref="remark" type="text" hintText="Remark..."  />
+            <TextField name="remark" ref="remark" type="text" hintText="Remark..."  />
           </div>
         </form>
         <RaisedButton

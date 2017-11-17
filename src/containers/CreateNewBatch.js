@@ -36,13 +36,13 @@ class CreateNewBatch extends PureComponent {
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">
-            <TextField ref="batchNumber" type="text" hintText="Batch Number" />
+            <TextField name="batchNumber" ref="batchNumber" type="text" hintText="Batch Number" />
           </div>
           <div className="input">
-            <TextField ref="startDate" type="date" hintText=""  />
+            <TextField name="startDate" ref="startDate" type="date" hintText=""  />
           </div>
           <div className="input">
-            <TextField ref="endDate" type="date" hintText=""  />
+            <TextField name="endDate" ref="endDate" type="date" hintText=""  />
           </div>
         </form>
         <RaisedButton

@@ -23,7 +23,7 @@ const buttonTwoStyle = {
 class Student extends PureComponent {
 
   componentWillMount(){
-    if (this.props.students.length === 0){ return this.props.push('/')}
+    if (this.props.students.length === 0) return this.props.push('/')
 
     this.props.fetchEvaluations()
   }
@@ -53,7 +53,7 @@ class Student extends PureComponent {
   }
 
   render() {
-    const { students, evaluations } = this.props
+    const { evaluations } = this.props
     const { studentId } = this.props.match.params
     const thisStudent = this.props.students.filter(student => student._id === studentId)
     const daStudent = thisStudent[0]
@@ -67,7 +67,8 @@ class Student extends PureComponent {
 
         <div className="img" style={{backgroundImage:"url("+ daStudent.imageUrl+")" }}/>
 
-      { studentEvaluations.map( (evaluation,index) => <div className='square-container'><div onClick={ this.toggle.bind(this,evaluation._id)} className='square' key={ index } style={ {height:'50px',width:'50px',background: evaluation.color}  }></div> <p id={`toggle${evaluation._id}`} style={{display: 'none'}}>{evaluation.date.substr(0,10)}; {evaluation.remark}</p></div>)  }
+      { studentEvaluations.map( (evaluation,index) => <div key={`a${index}`} className='square-container'><div onClick={ this.toggle.bind(this,evaluation._id)} className='square' key={ index } style={ {height:'50px',width:'50px',background: evaluation.color}  }></div> <p
+      key={`p${index}`} id={`toggle${evaluation._id}`} style={{display: 'none'}}>{evaluation.date.substr(0,10)}; {evaluation.remark}</p></div>)  }
 
 
         <EvaluationForm studentId={ daStudent._id }/>

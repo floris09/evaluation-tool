@@ -30,7 +30,7 @@ class StudentForm extends PureComponent {
       batch_id: batchId,
     }
     this.props.createStudent(student)
-    
+
   }
 
   render() {
@@ -40,10 +40,10 @@ class StudentForm extends PureComponent {
 
         <form onSubmit={this.submitForm.bind(this)}>
           <div className="input">
-            <TextField ref="name" type="text" hintText="Name" />
+            <TextField name="name" ref="name" type="text" hintText="Name" />
           </div>
           <div className="input">
-            <TextField ref="imageUrl" type="text" hintText="Image Url"  />
+            <TextField name="name" ref="imageUrl" type="text" hintText="Image Url"  />
           </div>
         </form>
         <RaisedButton
