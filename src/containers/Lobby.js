@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import fetchBatches from '../actions/batches/fetch'
 import fetchStudents from '../actions/students/fetch'
+import fetchEvaluations  from '../actions/evaluations/fetch'
 import CreateBatchButton from '../components/batches/CreateBatchButton'
 import { fetchOneBatch } from '../actions/batches/fetch'
 import Paper from 'material-ui/Paper'
@@ -14,6 +15,7 @@ class Lobby extends PureComponent {
   componentWillMount() {
     this.props.fetchBatches()
     this.props.fetchStudents()
+    this.props.fetchEvaluations()
   }
 
   fetchBatch(id){
@@ -38,4 +40,4 @@ class Lobby extends PureComponent {
 
 const mapStateToProps = ({ batches, currentUser }) => ({ batches, currentUser })
 
-export default connect(mapStateToProps, { fetchBatches, fetchOneBatch, fetchStudents, push })(Lobby)
+export default connect(mapStateToProps, { fetchBatches, fetchOneBatch, fetchStudents, fetchEvaluations, push })(Lobby)

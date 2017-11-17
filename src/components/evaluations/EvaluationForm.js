@@ -30,7 +30,7 @@ class EvaluationForm extends PureComponent {
     const { color } = props
 
     this.state = {
-      color
+      color,
     }
   }
 
@@ -59,6 +59,7 @@ class EvaluationForm extends PureComponent {
   submitFormNext(event) {
     event.preventDefault()
     const { studentId } = this.props
+    const { students } = this.props
 
     const evaluation = {
       date: this.refs.date.getValue(),
@@ -67,6 +68,14 @@ class EvaluationForm extends PureComponent {
       student_id: studentId
     }
     this.props.createEvaluation(evaluation)
+
+    const thisStudentIndex = students.findIndex(student => student._id === studentId)
+    const nextStudent = students[thisStudentIndex+1]
+    const firstStudent = students[0]
+
+    if(thisStudentIndex === students.length-1){ this.props.push(`/student/${firstStudent._id}`)}
+    else { this.props.push(`/student/${nextStudent._id}`)}
+
   }
 
 
