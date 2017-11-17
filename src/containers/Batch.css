@@ -27,6 +27,7 @@
   width: 200px;
   border-radius: 20px;
   text-align: center;
+  box-shadow: 2px 2px 10px black;
 }
 
 .student-img {
@@ -45,16 +46,18 @@
   width: 200px;
   border-radius: 20px;
   text-align: center;
+  box-shadow: 2px 2px 10px black;
 }
 
 .percentage-bar {
   margin: auto;
   margin-bottom: 30px;
   margin-top: 20px;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .percentage {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .random-student-button {
