@@ -50,7 +50,7 @@ React Application for evaluating students based on their performance.
 
 ## Running Locally
 
-Make sure you have [Yarn](https://yarnpkg.com/en/) and [NodeJS](https://nodejs.org/en/) installed, and the [backend](https://github.com/ff05/evaluation-tool-api) up and running.
+Make sure you have [Yarn](https://yarnpkg.com/en/) and [NodeJS](https://nodejs.org/en/) installed, and the [backend](https://github.com/floris09/evaluation-tool-api) up and running.
 
 ```bash
 git clone git@github.com:floris09/evaluation-tool-react.git
