@@ -13,11 +13,11 @@ React Application for evaluating students based on their performance.
 - Edit batch and students
 - Delete and edit evaluations
 
-<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.08.06.png" width="32%" align="left" margin="0" />
+<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.08.06.png" width="31%" align="left" margin="0" />
 
-<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.09.38.png" width="32%" align="left" margin="0" />
+<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.09.38.png" width="31%" align="left" margin="0" />
 
-<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.10.17.png" width="32%" align="left" margin="0" />
+<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.10.17.png" width="31%" align="left" margin="0" />
 
 <br clear="left" />
 
