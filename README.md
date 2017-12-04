@@ -13,11 +13,11 @@ React Application for evaluating students based on their performance.
 - Edit batch and students
 - Delete and edit evaluations
 
-[![](https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.08.06.png)](https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.08.06.png)
+<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.08.06.png" width="30%" align="left" >
 
-[![](https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.09.38.png)](https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.09.38.png)
+<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.09.38.png" width="30%" align="left" >
 
-[![](https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.10.17.png)](https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.10.17.png)
+<img src="https://github.com/floris09/evaluation-tool-react/blob/master/src/images/Screen%20Shot%202017-12-03%20at%2022.10.17.png" width="30%" align="left" >
 
 ## Database Structure
 
